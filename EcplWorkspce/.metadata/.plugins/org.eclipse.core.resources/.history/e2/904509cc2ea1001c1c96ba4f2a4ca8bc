@@ -1,0 +1,63 @@
+package com.example.springdemo.controller;
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.springdemo.entities.Customer;
+import com.example.springdemo.service.CustomerService;
+
+
+@RestController
+public class mycontroler {
+	
+	@Autowired
+	private CustomerService customerService;
+	
+	@GetMapping("/home")
+	public String home() {
+		return "i am in home page ";
+	}
+
+	//get the customer name 
+	@GetMapping("/customers")
+	public List<Customer> getCustomers()
+	{
+		return this.customerService.getCustomers();
+		
+	}
+	@PostMapping("/customers/add")
+	public Customer addCustomer(@RequestBody Customer customer)
+	{
+	  return this.customerService.addCustomer(customer);	
+	}
+	@PutMapping("/customers/{Id}")
+	public Customer updateCustomer(@RequestBody Customer customer,@PathVariable("Id")int Id)
+	{
+		return this.customerService.updateCustomer(customer,Id);
+	}
+	
+	@DeleteMapping("/courses/{Id}")
+	public ResponseEntity <HttpStatus> deleteCustomer(@PathVariable String Id)
+	{
+		try
+		{
+			this.customerService.deleteCustomer(Long.parseLong(Id));
+			return new ResponseEntity<> (HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity<> (HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+}

@@ -1,0 +1,7 @@
+package com.example.springdemo.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerDao extends JpaRepository<Customer,ID>{
+
+}

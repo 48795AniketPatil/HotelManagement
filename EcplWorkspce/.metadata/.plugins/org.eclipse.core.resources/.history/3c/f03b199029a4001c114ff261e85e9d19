@@ -1,0 +1,78 @@
+package com.example.springdemo.entities;
+import javax.persistence.Id;
+
+import javax.persistence.Entity;
+
+//@Entity
+public class Customer {
+	
+	@Id
+	private long Id;
+	private String Name;
+	private String Address;
+	private String  Id_proof;
+	private long Login_Id;
+	
+	@Override
+	public String toString() {
+		return "Customer [Id=" + Id + ", Name=" + Name + ", Address=" + Address + ", Id_proof=" + Id_proof
+				+ ", Login_Id=" + Login_Id + "]";
+	}
+
+	public long getId() {
+		return Id;
+	}
+
+	public void setId(long id) {
+		Id = id;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public String getId_proof() {
+		return Id_proof;
+	}
+
+	public void setId_proof(String id_proof) {
+		Id_proof = id_proof;
+	}
+
+	public long getLogin_Id() {
+		return Login_Id;
+	}
+
+	public void setLogin_Id(long login_Id) {
+		Login_Id = login_Id;
+	}
+
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(long id, String name, String address, String id_proof, long login_Id) {
+		super();
+		Id = id;
+		Name = name;
+		Address = address;
+		Id_proof = id_proof;
+		Login_Id = login_Id;
+	}
+	
+	
+
+}
